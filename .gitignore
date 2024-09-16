@@ -25,7 +25,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-.idea  # PyCharm specific
+.idea
 
 # PyInstaller
 *.manifest
@@ -59,8 +59,9 @@ cover/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-media/catalog/image  # Ignoring media uploads
-static  # Static files should be built, not stored in repo
+media/catalog/image/
+static/
+version/
 
 # Flask stuff:
 instance/
@@ -84,15 +85,16 @@ profile_default/
 ipython_config.py
 
 # pyenv
-# .python-version
+.python-version
 
 # pipenv
-# Pipfile.lock
+Pipfile.lock
 
 # poetry
-#poetry.lock
+poetry.lock
 
 # pdm
+pdm.lock
 .pdm.toml
 .pdm-python
 .pdm-build/
@@ -143,6 +145,6 @@ cython_debug/
 # PyCharm
 django/.idea/
 
-# Project-specific:
-version
-catalog.json  # Database dump or data-specific file
+# Exclude test files from version control
+test_pillow.py
+test_psycopg2.py
