@@ -28,6 +28,7 @@ class BlogListView(ListView):
         context['object_publ'] = object_publ
         return context
 
+
 class BlogDetailView(DetailView):
     model = Blog
 
@@ -36,6 +37,13 @@ class BlogDetailView(DetailView):
         self.object.views += 1
         self.object.save()
         return self.object
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Передача переменной version в шаблон
+        version = get_version()  # Функция для получения версии
+        context['version'] = version
+        return context
 
 
 class BlogUpdateView(UpdateView):
@@ -49,4 +57,3 @@ class BlogUpdateView(UpdateView):
 class BlogDeleteView(DeleteView):
     model = Blog
     success_url = reverse_lazy('blog:blog_list')
-
